@@ -56,7 +56,7 @@
             <TextBlock Foreground='Black'
                        Padding='5'
                        VerticalAlignment='Center'
-                       Text='EVILPROG приветствует вас в Приложении'
+                       Text='PROG приветствует вас в Приложении'
                        FontSize='22'
                        TextAlignment='Center' />
             <TextBlock x:Name="Error"

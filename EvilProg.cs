@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
+﻿using System.IO;
 using System.Linq;
-using System.Net;
 using System.Text;
-using System.Threading.Tasks;
 using Word = Microsoft.Office.Interop.Word;
 
 namespace Kursach
@@ -34,7 +30,6 @@ namespace Kursach
                     return "Ключ";
                 }
             }
-
             for (int i = 0; i < start.Length; i++)
             {
                 if (alfLower.Contains(ch[i]))
