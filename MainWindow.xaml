@@ -56,7 +56,7 @@
             <TextBlock Foreground='Black'
                        Padding='5'
                        VerticalAlignment='Center'
-                       Text='Программа'
+                       Text='EVILPROG приветствует вас в Приложении'
                        FontSize='22'
                        TextAlignment='Center' />
             <TextBlock x:Name="Error"
@@ -102,10 +102,10 @@
             <Button Content="Зашифровать из Файла" HorizontalAlignment="Left" Margin="238.4,160,0,0" VerticalAlignment="Top" Width="150" Height="50" Click="EncodeFile_Click" Grid.Column="1"/>
             <Button Content="Расшифровать из Файла" HorizontalAlignment="Left" Margin="237.4,230,0,0" VerticalAlignment="Top" Width="150" Height="50" Click="AntiEncodeFile_Click" Grid.Column="1"/>
             <Button Content="Сохранить в Файл" HorizontalAlignment="Left" Margin="237.4,300,0,0" VerticalAlignment="Top" Width="150" Height="50" Grid.Column="1" Click="Save_Click"/>
-            <Label Content="Путь к начальному файлу" HorizontalAlignment="Left" Margin="20,5,0,0" VerticalAlignment="Top"/>
-            <Label Content="Путь к конечному файлу" HorizontalAlignment="Left" Margin="20,47,0,0" VerticalAlignment="Top"/>
+            <Label Content="Путь к начальному файлу (Файл может быть в Формате .docx или .txt с Кодировкой Windows-1251)" HorizontalAlignment="Left" Margin="20,5,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="635"/>
+            <Label Content="Путь к конечному файлу (Файл может быть в Формате .docx или .txt с Кодировкой Windows-1251)" HorizontalAlignment="Left" Margin="20,47,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="635"/>
             <Label Content="Начальное Сообщение" HorizontalAlignment="Left" Margin="20,87,0,0" VerticalAlignment="Top"/>
-            <Label Content="Ключ Шифрования" HorizontalAlignment="Left" Margin="20,207,0,0" VerticalAlignment="Top"/>
+            <Label Content="Ключ Шифрования (В качестве ключа используется слово или набор букв из символов русского алфавита)" HorizontalAlignment="Left" Margin="20,207,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="635"/>
             <Label Content="Полученное сообщение" HorizontalAlignment="Left" Margin="20,247,0,0" VerticalAlignment="Top"/>
         </Grid>
 

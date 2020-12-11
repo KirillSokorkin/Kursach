@@ -31,7 +31,7 @@ namespace Kursach
                 }
                 else
                 {
-                    keys[i] = 0;
+                    return "Ключ";
                 }
             }
 
@@ -81,6 +81,10 @@ namespace Kursach
             string otvet = "";
 
             key = key.ToLower();
+            if (key.Length == 0)
+            {
+                return "Ключ";
+            }
             char[] keyCh = key.ToCharArray();
             int[] keys = new int[key.Length];
             for (int i = 0; i < key.Length; i++)
@@ -91,7 +95,7 @@ namespace Kursach
                 }
                 else
                 {
-                    keys[i] = 0;
+                    return "Ключ";
                 }
             }
 
@@ -136,46 +140,60 @@ namespace Kursach
         }
         public static string EvilDownLoadText(string path)
         {
-            string rasshirenie = path.Split('.').Last();
-            if (rasshirenie == "txt")
+            if (File.Exists(path))
             {
-                string start = "";
-                using (StreamReader sr = new StreamReader(path))
+                string rasshirenie = path.Split('.').Last();
+                if (rasshirenie == "txt")
                 {
-                    start = sr.ReadToEnd();
+                    BinaryReader instr = new BinaryReader(File.OpenRead(path));
+                    byte[] data = instr.ReadBytes((int)instr.BaseStream.Length);
+                    instr.Close();
+                    string start = "";
+                    
+                    byte[] by = Encoding.Convert(Encoding.GetEncoding("windows-1251"), Encoding.GetEncoding("utf-8"), data);
+
+                    
+                    start = Encoding.UTF8.GetString(by);
+                    
+                    return start;
                 }
-
-                return start;
-            }
-            else if (rasshirenie == "docx")
-            {
-                var wordApp = new Word.Application();
-                object file = path;
-                var wordDoc = wordApp.Documents.Open(ref file);
-
-                string text = "";
-                for (int i = 0; i < wordDoc.Paragraphs.Count; i++)
+                else if (rasshirenie == "docx")
                 {
-                    text +=  wordDoc.Paragraphs[i + 1].Range.Text;
-                }
+                    var wordApp = new Word.Application();
+                    object file = path;
+                    var wordDoc = wordApp.Documents.Open(ref file);
 
-                // Получение основного текста со страниц (без учёта сносок и колонтитулов)
-                string start = text;
-                
-                wordDoc.Close();
-                return start;
+                    string text = "";
+                    for (int i = 0; i < wordDoc.Paragraphs.Count; i++)
+                    {
+                        text += wordDoc.Paragraphs[i + 1].Range.Text;
+                    }
+
+                    // Получение основного текста со страниц (без учёта сносок и колонтитулов)
+                    string start = text;
+
+                    wordDoc.Close();
+                    return start;
+                }
+                else
+                {
+                    return "Расширение";
+                }
             }
             else
             {
-                return "!";
+                return "Наличие";
             }
+            
         }
-        public static void EvilUpLoadText(string path,string otvet)
+        public static string EvilUpLoadText(string path,string otvet)
         {
             string rasshirenie = path.Split('.').Last();
             if (rasshirenie == "txt")
             {
-                File.WriteAllText(path, otvet);
+                otvet = Encoding.GetEncoding("windows-1251").GetString(Encoding.Convert(Encoding.GetEncoding("utf-8"), Encoding.GetEncoding("windows-1251"), (Encoding.GetEncoding("utf-8").GetBytes(otvet))));
+                File.WriteAllText(path, otvet, Encoding.GetEncoding("windows-1251"));
+                return null;
             }
             else if (rasshirenie == "docx")
             {
@@ -188,11 +206,13 @@ namespace Kursach
                 wordDoc.SaveAs2(ref filename);
                 wordDoc.Close();
                 wordDoc = null;
+                return null;
+            }
+            else
+            {
+                return "Расширение";
             }
            
         }
-
-
-
     }
 }
