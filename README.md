@@ -1,2 +1,1 @@
 # Kursach
-ghjkl
