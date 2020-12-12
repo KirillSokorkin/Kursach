@@ -56,7 +56,7 @@
             <TextBlock Foreground='Black'
                        Padding='5'
                        VerticalAlignment='Center'
-                       Text='PROG приветствует вас в Приложении'
+                       Text='EVILPROG приветствует вас в Приложении'
                        FontSize='22'
                        TextAlignment='Center' />
             <TextBlock x:Name="Error"
@@ -106,7 +106,7 @@
             <Label Content="Путь к конечному файлу (Файл может быть в Формате .docx или .txt с Кодировкой Windows-1251)" HorizontalAlignment="Left" Margin="20,47,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="635"/>
             <Label Content="Начальное Сообщение" HorizontalAlignment="Left" Margin="20,87,0,0" VerticalAlignment="Top"/>
             <Label Content="Ключ Шифрования (В качестве ключа используется слово или набор букв из символов русского алфавита)" HorizontalAlignment="Left" Margin="20,207,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="635"/>
-            <Label Content="Полученное сообщение" HorizontalAlignment="Left" Margin="20,247,0,0" VerticalAlignment="Top"/>
+            <Label Content="Полученное Сообщение" HorizontalAlignment="Left" Margin="20,247,0,0" VerticalAlignment="Top"/>
         </Grid>
 
     </Grid>
